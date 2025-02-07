@@ -7,6 +7,10 @@ public class Client {
 
     // Constructor
     public Client(int idNumber, String firstName, String lastName, int age, Card card) {
+
+        if (idNumber <= 0) throw new IllegalArgumentException("ID number must be positive.");
+        if (age < 0) throw new IllegalArgumentException("Age cannot be negative.");
+
         this.idNumber = idNumber;
         this.firstName = firstName;
         this.lastName = lastName;

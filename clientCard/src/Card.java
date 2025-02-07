@@ -4,8 +4,14 @@ public class Card {
     private int pin;
     private boolean status;
 
+
     // Constructor
     public Card(int cardNumber, double balance, int pin, boolean status) {
+
+        if (cardNumber <= 0) throw new IllegalArgumentException("Card number must be positive.");
+        if (balance < 0) throw new IllegalArgumentException("Balance cannot be negative.");
+        if (pin < 1000 || pin > 99999) throw new IllegalArgumentException("PIN must be a 4 or 5-digit number.");
+
         this.cardNumber = cardNumber;
         this.balance = balance;
         this.pin = pin;
