@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         // Prompt Client For Details
 
         // Using While Loop And Try Catch For Error Handling
@@ -54,9 +53,9 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
+
         // Prompt For Card Details
         // Using While Loop And Try Catch For Error Handling
-
 
         int cardNumber=0;
         while (true) {
@@ -72,7 +71,7 @@ public class Main {
                 cardNumber = Integer.parseInt(cardNumberInput);
 
                 // check if number is positive
-                if (cardNumber<=0){
+                if (cardNumber <=0 ){
                     throw new IllegalArgumentException("Card number must be a positive value.");
                 }
                 break; // Exit the loop if valid
