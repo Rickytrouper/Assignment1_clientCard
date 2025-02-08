@@ -4,7 +4,6 @@ public class Card {
     private int pin;
     private boolean status;
 
-
     // Constructor
     public Card(int cardNumber, double balance, int pin, boolean status) {
 

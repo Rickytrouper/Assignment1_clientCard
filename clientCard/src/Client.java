@@ -38,7 +38,7 @@ public class Client {
                 getLastName(),
                 getAge());
 
-        // Displays initial card details
+        // Displays Associated card details
         card.displayCardDetails();
     }
 }
