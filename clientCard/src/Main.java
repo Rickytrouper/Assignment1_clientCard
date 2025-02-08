@@ -1,92 +1,151 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
-
-
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Client client = null;
 
 
-        try{
-        // Prompt For Client Input details
-        System.out.print("Enter Client ID Number: ");
-        int idNumber = Integer.parseInt(scanner.nextLine());
+        // Prompt Client For Details
 
-        System.out.print("Enter First Name: ");
+        // Using While Loop And Try Catch For Error Handling
+        int idNumber=0;
+        while (true) {
+            try {
+                System.out.print("Enter Client ID Number (e.g., 12345): ");
+                String idInput = scanner.nextLine();
+                idNumber = Integer.parseInt(idInput);
+
+                // Validate ID number Using If Statement
+                if (idNumber <= 0 || idInput.length() < 4 || idInput.length() > 5) {
+                    throw new IllegalArgumentException("ID number must be positive and 4 to 5 digits long.");
+                }
+                break; // Exit the loop if valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a numeric ID number.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        //Prompt For First Name
+        System.out.print("Enter First Name (e.g., John): ");
         String firstName = scanner.nextLine();
 
-        System.out.print("Enter Last Name: ");
+        //Prompt For Last Name
+        System.out.print("Enter Last Name (e.g., Doe): ");
         String lastName = scanner.nextLine();
 
-        System.out.print("Enter Age: ");
-        int age = Integer.parseInt(scanner.nextLine());
-        if(age < 0) throw new IllegalArgumentException("Age cannot be negative.");
+        // Prompt For Age
+        // Using While Loop And Try Catch For Error Handling
 
-        // Prompt For Card Input details
-        System.out.print("Enter Card Number: ");
-        int cardNumber = Integer.parseInt(scanner.nextLine());
+        int age=0;
+        while (true) {
+            try {
+                System.out.print("Enter Age (e.g., 30): ");
+                age = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Enter Balance: ");
-        double balance = Double.parseDouble(scanner.nextLine());
-        if (balance < 0) throw new IllegalArgumentException("Balance cannot be negative");
+                // Validate Age Using The If Statement
+                if (age <= 0) {
+                    throw new IllegalArgumentException("Age must be a positive number.");
+                }
+                break; // Exit the loop if valid
+                } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid age.");
+                } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        // Prompt For Card Details
+        // Using While Loop And Try Catch For Error Handling
 
-        System.out.print("Enter PIN: ");
-        int pin = Integer.parseInt(scanner.nextLine());
-        if (pin < 1000 || pin > 99999) throw new IllegalArgumentException("PIN must be a 4 or 5-digit number.");
 
-        System.out.print("Is the card active? (true/false): ");
+        int cardNumber=0;
+        while (true) {
+            try {
+                System.out.print("Enter Your 10 Digit Card Number (e.g., 0123456789): ");
+                String cardNumberInput =scanner.nextLine();
+
+                // Validate Card Number Using If Statement
+                if (cardNumberInput.length() < 10 ){
+                    throw new IllegalArgumentException("Card number must be 10 digits long.");
+                }
+                // convert to int
+                cardNumber = Integer.parseInt(cardNumberInput);
+
+                // check if number is positive
+                if (cardNumber<=0){
+                    throw new IllegalArgumentException("Card number must be a positive value.");
+                }
+                break; // Exit the loop if valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid card number.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("An unexpected error occurred: " + e.getMessage());
+            }
+        }
+
+        // Prompt User For Balance
+        // Using While Loop And Try Catch For Error Handling
+        double balance = 0;
+        while (true) {
+            try {
+                System.out.print("Enter Balance (e.g., 1500.75): ");
+                balance = Double.parseDouble(scanner.nextLine());
+
+                // Validate Balance
+                if (balance < 0) {
+                    throw new IllegalArgumentException("Balance cannot be negative.");
+                }
+                break; // Exit the loop if valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a numeric balance.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+            // Prompt User For Pin
+            // Using While Loop And Try Catch For Error Handling
+        int pin = 0;
+        while (true) {
+            try {
+                System.out.print("Please Enter Your 5 Digit PIN (must be positive): ");
+                String pinInput = scanner.nextLine();
+
+                // If Statement Use To Check The Lenght Of Pin
+                if (pinInput.length() != 5 ) {
+                    throw new IllegalArgumentException("PIN must be 5 digits long.");
+                }
+
+                pin = Integer.parseInt(pinInput); // Convert to integer if valid
+                if (pin <= 0) {
+                    throw new IllegalArgumentException("PIN must be positive.");
+                }
+                break; // Exit loop if valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid Pin.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+            // Prompt for card Stataus
+        System.out.print("Is the card active? (true/false, e.g., true): ");
         boolean status = Boolean.parseBoolean(scanner.nextLine());
 
         // Create Card and Client objects
         Card card = new Card(cardNumber, balance, pin, status);
-        client = new Client(idNumber, firstName, lastName, age, card);
+        Client client = new Client(idNumber, firstName, lastName, age, card);
 
-        // Display Client details
+        // Call the display methods from the Client class
         client.displayClientDetails();
 
-        // Modify Card Information
+        // Modify Card attributes
         card.updateCardStatus(true);
         card.updateCardPin(45678);
 
         // Display updated Card details
         System.out.println("\nUpdated Card Details:");
         card.displayCardDetails();
-
         scanner.close();
-
-} catch (NumberFormatException e) {
-        System.out.println("Error: Invalid number format. Please enter valid numeric values.");
-        } catch (IllegalArgumentException e) {
-        System.out.println("Error: " + e.getMessage());
-        } catch (Exception e) {
-        System.out.println("An unexpected error occurred: " + e.getMessage());
-        } finally {
-        System.out.println("Program execution completed.");
-            scanner.close();
-        }
-                }
-
-// Method to get valid integer input with error handling
-private static int getValidInteger(Scanner scanner) {
-    while (true) {
-        try {
-            return Integer.parseInt(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.print("Invalid input. Please enter a valid number: ");
-        }
     }
-}
-
-// Method to get valid double input with error handling
-private static double getValidDouble(Scanner scanner) {
-    while (true) {
-        try {
-            return Double.parseDouble(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.print("Invalid input. Please enter a valid decimal number: ");
-        }
-    }
-}
 }

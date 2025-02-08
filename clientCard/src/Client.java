@@ -3,13 +3,10 @@ public class Client {
     private String firstName;
     private String lastName;
     private int age;
-    private Card card; // Association with Card class
+    private Card card;
 
     // Constructor
     public Client(int idNumber, String firstName, String lastName, int age, Card card) {
-
-        if (idNumber <= 0) throw new IllegalArgumentException("ID number must be positive.");
-        if (age < 0) throw new IllegalArgumentException("Age cannot be negative.");
 
         this.idNumber = idNumber;
         this.firstName = firstName;
@@ -30,12 +27,18 @@ public class Client {
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setAge(int age) { this.age = age; }
+    public void setCard(Card card) { this.card = card; }
 
     // Method to display client details
-    public void displayClientDetails() {
+    public void displayClientDetails() {System.out.println("\nClient Details:");
         System.out.printf("%-15s %-15s %-15s %-15s%n", "Client ID", "First Name", "Last Name", "Age");
-        System.out.printf("%-15d %-15s %-15s %-15d%n", idNumber, firstName, lastName, age);
-        System.out.println("\nCard Details:");
+        System.out.printf("%-15d %-15s %-15s %-15d%n",
+                getIdNumber(),
+                getFirstName(),
+                getLastName(),
+                getAge());
+
+        // Displays initial card details
         card.displayCardDetails();
     }
 }
