@@ -128,8 +128,15 @@ public class Main {
             }
         }
             // Prompt for card Stataus
-        System.out.print("Is the card active? (true/false, e.g., true): ");
-        boolean status = Boolean.parseBoolean(scanner.nextLine());
+        if (statusInput.equals("Y")) {
+                status = true;  // Active
+                break;          // Exit the loop
+            } else if (statusInput.equals("N")) {
+                status = false; // Inactive
+                break;          // Exit the loop
+            } else {
+                System.out.println("Invalid input. Please enter 'Y' for Yes or 'N' for No.");
+            }
 
         // Create Card and Client objects
         Card card = new Card(cardNumber, balance, pin, status);
