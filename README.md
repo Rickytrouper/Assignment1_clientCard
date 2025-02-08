@@ -2,7 +2,7 @@ Module #1 Assignment
 
 Abbligale Ried - ID#2301010638
 Kwame Harriott - ID#2301011566
-Shemoy Shay -  ID#2201011505
+Shamoy Shae -  ID#2201011505
 Ricardo Wright - ID#2201010833
 Vocational Training Development Institute
 School of Applied Technology
