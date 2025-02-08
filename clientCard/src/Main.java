@@ -53,10 +53,8 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
-
         // Prompt For Card Details
         // Using While Loop And Try Catch For Error Handling
-
         int cardNumber=0;
         while (true) {
             try {
@@ -67,7 +65,7 @@ public class Main {
                 if (cardNumberInput.length() < 10 ){
                     throw new IllegalArgumentException("Card number must be 10 digits long.");
                 }
-                // convert to int
+                // Convert the string input to a int
                 cardNumber = Integer.parseInt(cardNumberInput);
 
                 // check if number is positive
@@ -83,7 +81,6 @@ public class Main {
                 System.out.println("An unexpected error occurred: " + e.getMessage());
             }
         }
-
         // Prompt User For Balance
         // Using While Loop And Try Catch For Error Handling
         double balance = 0;
@@ -115,7 +112,6 @@ public class Main {
                 if (pinInput.length() != 5 ) {
                     throw new IllegalArgumentException("PIN must be 5 digits long.");
                 }
-
                 pin = Integer.parseInt(pinInput); // Convert to integer if valid
                 if (pin <= 0) {
                     throw new IllegalArgumentException("PIN must be positive.");
@@ -127,7 +123,7 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
-            // Prompt for card Stataus
+        // Prompt for card Stataus
         String statusInput;
         boolean status = false;
         while (true) {
