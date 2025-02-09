@@ -1,3 +1,4 @@
+
 public class Client {
     private int idNumber;
     private String firstName;
@@ -11,7 +12,7 @@ public class Client {
         this.idNumber = idNumber;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.age = age >= 0 ? age : 0;
         this.card = card;
     }
 

@@ -128,7 +128,15 @@ public class Main {
             }
         }
             // Prompt for card Stataus
-        if (statusInput.equals("Y")) {
+        String statusInput;
+        boolean status = false;
+        while (true) {
+            System.out.print("Is Your card active? (Y/N, e.g., Y): ");
+
+            // Use trim to remove white space and toUpper for case handling.
+            statusInput = scanner.nextLine().trim().toUpperCase();
+
+            if (statusInput.equals("Y")) {
                 status = true;  // Active
                 break;          // Exit the loop
             } else if (statusInput.equals("N")) {
@@ -137,6 +145,7 @@ public class Main {
             } else {
                 System.out.println("Invalid input. Please enter 'Y' for Yes or 'N' for No.");
             }
+        }
 
         // Create Card and Client objects
         Card card = new Card(cardNumber, balance, pin, status);
@@ -153,5 +162,6 @@ public class Main {
         System.out.println("\nUpdated Card Details:");
         card.displayCardDetails();
         scanner.close();
+
     }
 }
