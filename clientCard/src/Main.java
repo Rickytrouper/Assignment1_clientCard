@@ -26,11 +26,11 @@ public class Main {
             }
         }
         //Prompt For First Name
-        System.out.print("Enter First Name (e.g., John): ");
+        System.out.print("Enter First Name (e.g., Paul): ");
         String firstName = scanner.nextLine();
 
         //Prompt For Last Name
-        System.out.print("Enter Last Name (e.g., Doe): ");
+        System.out.print("Enter Last Name (e.g., Smith): ");
         String lastName = scanner.nextLine();
 
         // Prompt For Age
@@ -43,7 +43,7 @@ public class Main {
                 age = Integer.parseInt(scanner.nextLine());
 
                 // Validate Age Using The If Statement
-                if (age <= 0) {
+                if (age <0) {
                     throw new IllegalArgumentException("Age must be a positive number.");
                 }
                 break; // Exit the loop if valid
@@ -60,12 +60,12 @@ public class Main {
         int cardNumber=0;
         while (true) {
             try {
-                System.out.print("Enter Your 10 Digit Card Number (e.g., 0123456789): ");
+                System.out.print("Enter Your 9 Digit Card Number (e.g., 012345678): ");
                 String cardNumberInput =scanner.nextLine();
 
                 // Validate Card Number Using If Statement
                 if (cardNumberInput.length() < 10 ){
-                    throw new IllegalArgumentException("Card number must be 10 digits long.");
+                    throw new IllegalArgumentException("Card number must be 9 digits long.");
                 }
                 // convert to int
                 cardNumber = Integer.parseInt(cardNumberInput);
