@@ -64,10 +64,10 @@ public class Main {
                 String cardNumberInput =scanner.nextLine();
 
                 // Validate Card Number Using If Statement
-                if (cardNumberInput.length() < 10 ){
+                if (cardNumberInput.length() < 9 ){
                     throw new IllegalArgumentException("Card number must be 9 digits long.");
                 }
-                // convert to int
+                // convert card input from string to int
                 cardNumber = Integer.parseInt(cardNumberInput);
 
                 // check if number is positive
@@ -127,7 +127,7 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
-            // Prompt for card Stataus
+            // Prompt for card Status
         String statusInput;
         boolean status = false;
         while (true) {
